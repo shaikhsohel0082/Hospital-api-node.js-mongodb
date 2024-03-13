@@ -6,7 +6,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/hospital';
+const MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose.connect(MONGODB_URI)
   .then(() => {
@@ -21,4 +21,4 @@ mongoose.connect(MONGODB_URI)
       console.log(`Server is running on port ${PORT}`);
     });
   })
-  .catch((error) => console.error("Error connecting to MongoDB:", error));
+  .catch((error) => console.error("Error connecting to MongoDB:", error.message));
